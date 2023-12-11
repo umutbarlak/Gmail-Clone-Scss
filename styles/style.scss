@@ -1,263 +1,291 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-@import 'variables';
-@import 'breakpoints';
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+@import "variables";
+@import "breakpoints";
+@import "modal";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: 'Roboto', sans-serif;
-    background: #f6f8fc;
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f6f8fc;
 }
 
-header{
+header {
+  @extend .between;
+  padding: 20px;
+  gap: 20px;
+  font-size: 21px;
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    i {
+      font-size: 19px;
+    }
+    img {
+      width: 50px;
+    }
+  }
+
+  .middle {
+    form {
+      display: flex;
+      background: rgba(235, 234, 234);
+      padding: 6px 9px;
+      border-radius: 10px;
+
+      button {
+        background-color: transparent;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        font-size: 18px;
+        background: transparent;
+      }
+    }
+
+    @include sm() {
+      display: none;
+    }
+  }
+
+  .right {
     @extend .between;
-    padding: 20px ;
-    gap: 20px;
-    font-size: 21px;
+    gap: 15px;
 
-    .left{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        i{
-            font-size: 19px;
-        }
-        img{
-            width: 50px;
-        }
+    i {
+      @extend .icon;
     }
 
-    .middle{
-
-        form{
-            display: flex;
-            background: rgba(235,234,234);
-            padding: 6px 9px;
-            border-radius: 10px;
-
-            button{
-                background-color: transparent;
-            }
-
-            input{
-                border: none;
-                outline: none;
-                font-size: 18px;
-                background: transparent;
-            }
-
-        }
-
-        @include sm(){
-            display: none
-        }
-
+    img {
+      height: 36px;
+      width: 36px;
+      border-radius: 50%;
     }
-
-    .right{
-        @extend .between;
-        gap: 15px;
-
-        i{
-            @extend .icon
-        }
-
-        img{
-            height: 36px;
-            width: 36px;
-            border-radius: 50%;
-        }
-    }
+  }
 }
 
-
-section{
-    display: flex;
-    gap: 20px;
+section {
+  display: flex;
+  gap: 20px;
 }
 
-nav{
-    display: flex;
-    flex-direction: column;
-    padding-left:12px ;
-    gap: 40px;
+nav {
+  display: flex;
+  flex-direction: column;
+  padding-left: 12px;
+  gap: 40px;
 
-    .create{
-        background: $light_blue;
-        border-radius: 10px;
-        padding: 10px;
-        display: flex;
-        gap: 20px;
-        cursor: pointer;
-        transition:  box-shadow 0.3s;
-        &:hover{
-            box-shadow: 2px 2px 10px gray;
-        }
-    }
-
-    ul{
-        display: grid;
-        gap: 16px;
-
-        li{
-            padding: 8px;
-            margin-left: 4px;
-            display: flex;
-            gap: 12px;
-            border-radius: 0 15px 15px 0;
-            &:hover{
-                background: $light_blue;
-            }
-        }
-    }
-
-    .bottom{
-        margin-left: 8px;
-    }
-
-}
-
-.hide{
-    span{
-        display: none;
-    }
-}
-
-
-main{
-    flex-grow: 1;
-
-    @include sm{
-        margin-right: 20px
-    }
-
-    .top{
-        @extend .between;
-        background: white;
-        border-radius: 10px 10px 0 0 ;
-        padding: 8px 16px;
-
-        i{
-            @extend .icon
-        }
-
-        .left, 
-        .right{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-    }
-
-
-    .mails{
-        background: $gray;
-        height: 80vh;
-    }
-}
-
-.mail{
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    align-items: center;
-    font-size: 16px;
+  .create {
+    background: $light_blue;
+    border-radius: 10px;
     padding: 10px;
-    border-bottom: 1px solid white;
-    column-gap: 10px;
+    display: flex;
+    gap: 20px;
     cursor: pointer;
-
-    &:hover{
-        box-shadow: 0 0 30px rgba(128, 128, 128, 0.4);
+    transition: box-shadow 0.3s;
+    &:hover {
+      box-shadow: 2px 2px 10px gray;
     }
+  }
 
-    .info{
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
+  ul {
+    display: grid;
+    gap: 16px;
 
-    .mail-right{
+    li {
+      list-style-type: none;
 
-        display: grid;
-        grid-template-columns: 3fr 1fr;
-        align-items: center;
+      label{
+      padding: 8px;
+      margin-left: 4px;
+      display: flex;
+      gap: 12px;
+      border-radius: 0 15px 15px 0;
+      white-space: nowrap;
+      cursor: pointer;
 
-        .content{
-            display: flex;
-            gap: 5px;
-            white-space: nowrap;
-            text-overflow: ellipsis;
-            overflow: hidden;
-    
-            .title{
-                font-weight: bold;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-    
-            .desc{
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-    
-        }
-    
-        .time{
-            text-align: end;
-            white-space: nowrap;
-        }
-    
-        button{
-            border: none;
-            display: none;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-            padding: 4px;
-            border-radius: 5px;
-            &:hover{
-                background: gray;
-            }
-        }
-    
-        &:hover button{
-            display: block;
-        }
-    
-        &:hover .time{
-            display: none;
-        }
-    }
+      &:hover  {
+        background: $light_blue;
+      }
+      }
+      
+     
 
-   
+      input{
+        display: none;
+      }
+
+      &:has(input:checked) label {
+        background-color:$light_blue ;
+      }
+      
+    } 
+  }
+
+  .bottom {
+    margin-left: 8px;
+  }
 }
 
-aside{
+.hide {
+  span {
+    display: none;
+  }
+}
+
+main {
+  flex-grow: 1;
+
+  @include sm {
+    margin-right: 20px;
+  }
+
+  .top {
+    @extend .between;
+    background: white;
+    border-radius: 10px 10px 0 0;
+    padding: 8px 16px;
+
+    i {
+      @extend .icon;
+    }
+
+    .left,
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .mails {
+    background: $gray;
+    margin-bottom: 20px;
+  }
+}
+
+.mail {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  align-items: center;
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid white;
+  column-gap: 10px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 0 30px rgba(128, 128, 128, 0.4);
+  }
+
+  .info {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 25px;
-    padding-right: 12px;
+    gap: 10px;
+  }
 
-    span{
-        background:$dark_gray ;
-        height: 2px;
-        width: 100%;
+  .mail-right {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    align-items: center;
+    justify-content: space-between;
+
+    .content {
+      display: flex;
+      gap: 5px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+
+      .title {
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .desc {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
-    img{
-        @extend .icon;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
+    .time {
+      text-align: end;
+      white-space: nowrap;
     }
 
-    @include sm{
-        display: none;
+    button {
+      justify-self: flex-end;
+      width: 40px;
+      border: 1px solid gray;
+      display: none;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 4px 10px;
+      border-radius: 5px;
+      &:hover {
+        background: gray;
+      }
     }
 
+    &:hover button {
+      display: block;
+    }
+
+    &:hover .time {
+      display: none;
+    }
+
+    @include sm {
+      margin-top: 4px;
+      margin-left: 15px;
+    }
+
+    @include md {
+      margin-top: 4px;
+      margin-left: 15px;
+    }
+  }
+
+  @include sm {
+    display: block;
+  }
+
+  @include md {
+    display: block;
+  }
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-right: 12px;
+
+  span {
+    background: $dark_gray;
+    height: 2px;
+    width: 100%;
+  }
+
+  img {
+    @extend .icon;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+  }
+
+  @include sm {
+    display: none;
+  }
 }

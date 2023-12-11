@@ -1,16 +1,22 @@
 export const ele = {
   menu: document.querySelector("#menu"),
   nav: document.querySelector("nav"),
-  mailsArea: document.querySelector(".mails")
+  mailsArea: document.querySelector(".mails"),
+  modal: document.querySelector(".modal-wrapper"),
+  createBtn: document.querySelector(".create"),
+  closeBtn: document.querySelector(".close-modal"),
+  modalForm: document.querySelector(".modal"),
 };
 
 export const renderMails = (mailData) => {
   const mail_html = mailData.map(
     (mail) => `
-    <div class="mail">
+    <div class="mail" data-id="${mail.id}">
         <div class="info">
             <input type="checkbox"/>
-            <i class="bi bi-star-fill"></i>
+            <i id="star" class="bi ${
+              mail.isStared ? "bi-star-fill" : "bi-star"
+            }"></i>
             <b>${mail.sender}</b>
         </div>
         <div class="mail-right">
@@ -20,12 +26,15 @@ export const renderMails = (mailData) => {
             </div>
             <p class="time">${mail.date}</p>
 
-            <button>Sil</button>
+            <button id="delete" >Sil</button>
         </div>
     </div>
     `
   );
 
   ele.mailsArea.innerHTML = mail_html.join(" ");
+};
 
+export const toggleModal = (willOpen) => {
+  ele.modal.style.display = willOpen === true ? "grid" : "none";
 };
