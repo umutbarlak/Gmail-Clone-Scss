@@ -7,4 +7,5 @@ Bu proje bir gmail klon projesidir ve Scss kullanılarak hazırlanmış ve dinam
 HTML, SCSS, JavaScript kullanılmıştır.
 
 <h2>Ekran Videosu</h2>
+
 ![](Gmail-Clone.gif)
