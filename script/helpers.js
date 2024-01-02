@@ -10,4 +10,3 @@ export const getDate = () => {
   return day + " " + month_tr[monthIndex];
 };
 
-console.log(getDate());

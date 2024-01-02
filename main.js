@@ -48,6 +48,7 @@ ele.modalForm.addEventListener("submit", (e) => {
     renderMails(mailData);
 
     toggleModal(false);
+    ele.modalForm.reset();
   }
 });
 
@@ -86,3 +87,26 @@ ele.nav.addEventListener("click", (e) => {
     renderMails(mailData);
   }
 });
+
+let timer;
+
+ele.searchInp.addEventListener("input", (e) => {
+  clearTimeout(timer);
+  timer = setTimeout(() => searchMails(e), 1000);
+});
+
+function searchMails(e) {
+  const query = e.target.value.toLowerCase();
+
+  const filtred = mailData.filter((mail) =>
+    Object.values(mail)
+      .slice(3, 6)
+      .some((value) => value.toLowerCase().includes(query))
+  );
+
+  if (filtred.length === 0) {
+    ele.mailsArea.innerHTML = `<div class="warn">Arattığınız terime uygun bir mail bulunamadı</div>`;
+  } else {
+    renderMails(filtred);
+  }
+}

@@ -103,6 +103,7 @@ header {
   padding: 20px;
   gap: 20px;
   font-size: 21px;
+  position: relative;
 }
 header .left {
   display: flex;
@@ -131,7 +132,7 @@ header .middle form input {
   background: transparent;
 }
 @media (max-width: 768px) {
-  header .middle {
+  header .middle form {
     display: none;
   }
 }
@@ -333,4 +334,10 @@ aside img {
   aside {
     display: none;
   }
+}
+
+.warn {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

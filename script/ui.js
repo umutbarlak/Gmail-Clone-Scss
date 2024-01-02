@@ -6,6 +6,8 @@ export const ele = {
   createBtn: document.querySelector(".create"),
   closeBtn: document.querySelector(".close-modal"),
   modalForm: document.querySelector(".modal"),
+  searchInp: document.querySelector("form #search"),
+  searchBtn: document.querySelector(".bi-search"),
 };
 
 export const renderMails = (mailData) => {

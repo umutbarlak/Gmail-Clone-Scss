@@ -19,6 +19,7 @@ header {
   padding: 20px;
   gap: 20px;
   font-size: 21px;
+  position: relative;
 
   .left {
     display: flex;
@@ -49,10 +50,10 @@ header {
         font-size: 18px;
         background: transparent;
       }
-    }
 
-    @include sm() {
-      display: none;
+      @include sm {
+        display: none;
+      }
     }
   }
 
@@ -103,31 +104,28 @@ nav {
     li {
       list-style-type: none;
 
-      label{
-      padding: 8px;
-      margin-left: 4px;
-      display: flex;
-      gap: 12px;
-      border-radius: 0 15px 15px 0;
-      white-space: nowrap;
-      cursor: pointer;
+      label {
+        padding: 8px;
+        margin-left: 4px;
+        display: flex;
+        gap: 12px;
+        border-radius: 0 15px 15px 0;
+        white-space: nowrap;
+        cursor: pointer;
 
-      &:hover  {
-        background: $light_blue;
+        &:hover {
+          background: $light_blue;
+        }
       }
-      }
-      
-     
 
-      input{
+      input {
         display: none;
       }
 
       &:has(input:checked) label {
-        background-color:$light_blue ;
+        background-color: $light_blue;
       }
-      
-    } 
+    }
   }
 
   .bottom {
@@ -288,4 +286,10 @@ aside {
   @include sm {
     display: none;
   }
+}
+
+.warn {
+  text-align: center;
+  padding: 20px;
+  font-weight: bold;
 }
